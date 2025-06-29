@@ -21,7 +21,7 @@ const Hero = () => {
        "https://portfolio-backend-fmoh.onrender.com/api/v1/user/portfolio/me",
         { withCredentials: true }
       );
-      console.log("DATA",data);
+      // console.log("DATA",data);
       setUser(data.user);
     };
     getMyProfile();
