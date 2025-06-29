@@ -25,9 +25,9 @@ const Hero = () => {
     getMyProfile();
   }, []);
 
-  // ✅ Safe helper function to validate links
+  // ✅ Safely check if a URL is non-null, a string, and not empty
   const isValidLink = (url) =>
-    typeof url === "string" && url?.trim().length > 0;
+    url && typeof url === "string" && url.trim().length > 0;
 
   return (
     <div className="w-full">
@@ -110,4 +110,3 @@ const Hero = () => {
 };
 
 export default Hero;
-////
