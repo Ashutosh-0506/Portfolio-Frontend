@@ -21,11 +21,11 @@ const Hero = () => {
        "https://portfolio-backend-fmoh.onrender.com/api/v1/user/portfolio/me",
         { withCredentials: true }
       );
+      console.log("DATA",data);
       setUser(data.user);
     };
     getMyProfile();
   }, []);
-  console.log("DATA",data);
   return (
     <div className="w-full">
       <div className="flex items-center gap-2 mb-2">
