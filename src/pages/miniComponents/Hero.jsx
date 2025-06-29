@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 
 const Hero = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null); // important: null instead of {}
 
   useEffect(() => {
     const getMyProfile = async () => {
@@ -25,9 +25,11 @@ const Hero = () => {
     getMyProfile();
   }, []);
 
-  // ✅ Safely check if a URL is non-null, a string, and not empty
   const isValidLink = (url) =>
     url && typeof url === "string" && url.trim().length > 0;
+
+  // ✅ Protect against accessing null values
+  if (!user) return <p className="text-center">Loading...</p>;
 
   return (
     <div className="w-full">
@@ -90,11 +92,7 @@ const Hero = () => {
           </a>
         )}
         {isValidLink(user?.resume?.url) && (
-          <a
-            href={user.resume.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={user.resume.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <ExternalLink />
               <span>Resume</span>
